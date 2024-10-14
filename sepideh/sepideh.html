@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پرنده</title>
+    <style>
+    body{ font-family: Arial, sans-serif;
+    }
+        header {background-color: rgb(46, 103, 168);
+            color: rgb(0, 0, 0);
+            text-align: center;
+            padding: 1em;
+        }
+        .gallery img {width: 100px;
+            height: 100px;
+            margin: 5px;
+            cursor: pointer;}
+        .modal {display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);}
+        .modal-content {margin: 15% auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+        .modal-content img {width: 100%;
+        }
+        .modal-buttons {text-align: center;
+            margin-top: 10px;
+        }
+        .modal-buttons button {margin: 5px;
+            padding: 10px;
+        }
+        .galery {  background: rgb(69, 30, 137);
+            color: rgb(11, 11, 11);
+            text-align: center;
+            padding: 1em 0;
+        }
+        .grid-container{display:grid ;
+             grid-template-columns: repeat(3, 1fr);
+              gap: 10px;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>پرنده</h1>
+    </header>
+
+    <div class="gallery">
+        <img src="https://cdn2.tala.ir/content/thumb/tumbnail800x450/content/post-img/202209/137705-259814.jpg" alt="Image 1" onclick="openModal(1)">
+        <img src="https://cdn2.tala.ir/content/blog/137705/25994195.jpg" alt="Image 2" onclick="openModal(2)">
+        <img src="https://cdn2.tala.ir/content/blog/137705/31296957.jpg" alt="Image 3" onclick="openModal(3)">
+    <hr>
+        <img src="https://cdn2.tala.ir/content/blog/137705/62180528.jpg" alt="Image 4" onclick="openModal(4)">
+        <img src="https://cdn2.tala.ir/content/blog/137705/61965394.jpg" alt="Image 5" onclick="openModal(5)">
+        <img src="https://cdn2.tala.ir/content/blog/137705/45230647.jpg" alt="Image 6" onclick="openModal(6)">
+<hr>
+        <img src="https://cdn2.tala.ir/content/blog/137705/17721564.jpg" alt="Image 7" onclick="openModal(7)">
+        <img src="https://cdn2.tala.ir/content/blog/137705/38602809.jpg" alt="Image 8" onclick="openModal(8)">
+        <img src="https://cdn2.tala.ir/content/blog/137705/34135855.jpg" alt="Image 9" onclick="openModal(9)">
+        </div>    
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <img id="modalImage" src="">
+        </div>
+        <div class="modal-buttons">
+            <button onclick="prevImage()"> prevImage</button>
+            <button onclick="closeModal()">home</button>
+            <button onclick="nextImage()">nextImage</button>
+        </div>
+    </div>
+    <script>
+        let currentImageIndex = 0;
+        const images = [
+            'https://cdn2.tala.ir/content/thumb/tumbnail800x450/content/post-img/202209/137705-259814.jpg', 
+            'https://cdn2.tala.ir/content/blog/137705/25994195.jpg',
+            'https://cdn2.tala.ir/content/blog/137705/31296957.jpg',
+            'https://cdn2.tala.ir/content/blog/137705/62180528.jpg',
+            'https://cdn2.tala.ir/content/blog/137705/61965394.jpg',
+            'https://cdn2.tala.ir/content/blog/137705/45230647.jpg',
+            'https://cdn2.tala.ir/content/blog/137705/17721564.jpg',
+            'https://cdn2.tala.ir/content/blog/137705/38602809.jpg',
+            'https://cdn2.tala.ir/content/blog/137705/34135855.jpg'
+        ];
+        function openModal(index) { currentImageIndex = index - 1;
+            document.getElementById('modalImage').src = images[currentImageIndex];
+            document.getElementById('myModal').style.display = "block";
+        }
+        function closeModal() {
+            document.getElementById('myModal').style.display = "none";
+        }
+        function prevImage() {
+            currentImageIndex = (currentImageIndex > 0) ? currentImageIndex - 1 : images.length - 1;
+            document.getElementById('modalImage').src = images[currentImageIndex];
+        }
+        function nextImage() {
+            currentImageIndex = (currentImageIndex < images.length - 1) ? currentImageIndex + 1 : 0;
+            document.getElementById('modalImage').src = images[currentImageIndex];
+         }
+    </script>
+<footer>
+    <p class="galery"> 
+         </p>
+</footer>
+</body>
+</html>
